@@ -1,13 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/awk -f
 
-readonly MYSELF="$(readlink -f $0)"
-readonly MYPATH="${MYSELF%/*}"
-
-
-awk -v freq=0.1 -v spread=3.0 'BEGIN {
-	if(!freq)  freq=0.1
-	if(!spread) spread=3.0
-
+BEGIN {
+	freq = 0.1
+	spread = 3.0
 	pi = atan2(0,-1)
 	offset = 0
 }
@@ -29,5 +24,3 @@ function rainbow(f,s,  t, r,g,b) {
 	offset += spread
 	printf("\n")
 }
-'
-
